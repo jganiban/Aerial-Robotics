@@ -56,20 +56,34 @@ int main(int argc, char** argv) {
   // Test Balloon Finder
   BalloonFinder balloonfinder;
   // Display an image
-  cv::Mat image = cv::imread(std::string(argv[1]));
-  if(!image.data) {
-    std::cout <<  "Could not open or find the image" << std::endl;
-    return EXIT_FAILURE;
+  std::vector<std::string> filenameVec = {"../images/balloons/blue_balloon/frame00067.jpg",
+                                          "../images/balloons/blue_balloon/frame00069.jpg",
+                                          "../images/balloons/blue_balloon/frame00081.jpg",
+                                          "../images/balloons/blue_balloon/frame00084.jpg",
+                                          "../images/balloons/red_balloon/frame00050.jpg",
+                                          "../images/balloons/red_balloon/frame00053.jpg",
+                                          "../images/balloons/red_balloon/frame00074.jpg",
+                                          "../images/balloons/red_balloon/frame00079.jpg",
+                                          "../images/balloons/red_balloon/frame000103.jpg"};
+  cv::Mat image;
+  std::cout << filenameVec[0] << std::endl;
+  for(size_t ii = 0;ii<filenameVec.size();ii++){
+    image = cv::imread(filenameVec[ii]);
+    if(!image.data) {
+      std::cout <<  "Could not open or find the image" << std::endl;
+      return EXIT_FAILURE;
+    }
+
+    std::vector<std::shared_ptr<const CameraBundle>> camerabundle;
+    std::vector<BalloonFinder::BalloonColor> colors;
+
+    balloonfinder.findBalloons(&image,
+                              Eigen::Matrix3d(),
+                              Eigen::Vector3d(),
+                              &camerabundle,
+                              &colors);
+    
   }
-
-  std::vector<std::shared_ptr<const CameraBundle>> camerabundle;
-  std::vector<BalloonFinder::BalloonColor> colors;
-
-  balloonfinder.findBalloons(&image,
-                            Eigen::Matrix3d(),
-                            Eigen::Vector3d(),
-                            &camerabundle,
-                            &colors);
 
   // cv::namedWindow("Display window", cv::WINDOW_NORMAL);
   // cv::resizeWindow("Display window", 600, 600);
