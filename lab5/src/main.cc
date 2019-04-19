@@ -56,17 +56,17 @@ int main(int argc, char** argv) {
   // Test Balloon Finder
   BalloonFinder balloonfinder;
   // Display an image
-  std::vector<std::string> filenameVec = {"../images/balloons/blue_balloon/frame00067.jpg",
-                                          "../images/balloons/blue_balloon/frame00069.jpg",
-                                          "../images/balloons/blue_balloon/frame00081.jpg",
-                                          "../images/balloons/blue_balloon/frame00084.jpg",
-                                          "../images/balloons/red_balloon/frame00050.jpg",
-                                          "../images/balloons/red_balloon/frame00053.jpg",
-                                          "../images/balloons/red_balloon/frame00074.jpg",
-                                          "../images/balloons/red_balloon/frame00079.jpg",
-                                          "../images/balloons/red_balloon/frame000103.jpg"};
+  std::vector<std::string> filenameVec = {"../images/balloons/blue_balloon/frame00049.jpg",
+                                          "../images/balloons/blue_balloon/frame00082.jpg",
+                                          "../images/balloons/blue_balloon/frame00089.jpg",
+                                          "../images/balloons/blue_balloon/frame00118.jpg",
+                                          "../images/balloons/blue_balloon/frame00123.jpg",
+                                          "../images/balloons/red_balloon/frame00057.jpg",
+                                          "../images/balloons/red_balloon/frame00068.jpg",
+                                          "../images/balloons/red_balloon/frame00077.jpg",
+                                          "../images/balloons/red_balloon/frame00078.jpg",
+                                          "../images/balloons/red_balloon/frame00090.jpg"};
   cv::Mat image;
-  std::cout << filenameVec[0] << std::endl;
   for(size_t ii = 0;ii<filenameVec.size();ii++){
     image = cv::imread(filenameVec[ii]);
     if(!image.data) {

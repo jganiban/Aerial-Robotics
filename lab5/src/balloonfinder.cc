@@ -7,23 +7,6 @@
 #include "structurecomputer.h"
 
 
-
-// bool BallonFinderOfColor(const cv::Mat* image,
-// 						const BalloonColor color,
-// 						Eigen::Matrix2d* rx){
-	
-// 	if(color == RED){
-
-// 	}
-
-// 	if(color == BLUE){
-
-// 	}
-
-// 	return false;
-
-// }
-
 void BalloonFinder::
 findBalloons(const cv::Mat* image,
              const Eigen::Matrix3d RCI,
@@ -96,7 +79,6 @@ findBalloons(const cv::Mat* image,
 		circle(*image, centerOfBalloon, 5, color, 10);
 		
 	  }
-	  std::cout << aspectRatio << " " << radius << std::endl;
 	  drawContours(*image, contours, ii, color, 2, LINE_8, hierarchy, 0);
 	  if(aspectRatio < maxAspectRatio && radius > minRadius) {
 	    circle(*image, center, (int)radius, color, 2);
